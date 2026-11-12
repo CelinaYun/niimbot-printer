@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------- Python 虚拟环境
+# 两份都建过（根目录那份是早期遗留），一律不进仓库
+.venv/
+**/.venv/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# ---------------------------------------------------------------- 程序运行产物
+# 打印设置.json 保存了上次打的文字内容；打印记录按天分文件，含本机绝对路径
+nimbot-printer/打印设置.json
+nimbot-printer/打印记录*.log
+nimbot-printer/打印记录*.jsonl
+nimbot-printer/_gui_win.png
+nimbot-printer/_gui_en.png
+nimbot-printer/_*_zoom.png
+nimbot-printer/_font_test.png
+nimbot-printer/_font_overview.png
+
+# ---------------------------------------------------------------- 工具/系统
+.mimocode/
+.workbuddy/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+nimbot-printer/_gui_light.png
+nimbot-printer/_tbtn.png
+nimbot-printer/_r_*.png
+nimbot-printer/_brand.png
+nimbot-printer/build/
+nimbot-printer/dist/
+nimbot-printer/*.spec
+NIIMBOT打印助手-v*.zip
+nimbot-printer/_emoji_*.png
+NIIMBOT打印助手-v*/
+
+# ---------------------------------------------------------------- 字体
+# 界面用的 Nothing 官方字体随仓库一起提供（版权与使用限制见
+# nimbot-printer/assets/fonts/NOTICE.md），不走忽略规则。
+nimbot-printer/_shot_*.png
+nimbot-printer/_cmp_*.png
+nimbot-printer/_from_log.png
+nimbot-printer/_new_layout.png

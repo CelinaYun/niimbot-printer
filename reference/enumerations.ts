@@ -1,0 +1,251 @@
+/**
+ * Sent with {@link RequestCommandId.PrinterInfo}
+ * @category Packets
+ **/
+export enum PrinterInfoType {
+  Density = 1,
+  Speed = 2,
+  LabelType = 3,
+  Language = 6,
+  AutoShutdownTime = 7,
+  /** See {@link modelsLibrary} */
+  PrinterModelId = 8,
+  SoftWareVersion = 9,
+  BatteryChargeLevel = 10,
+  SerialNumber = 11,
+  HardWareVersion = 12,
+  BluetoothAddress = 13,
+  PrintMode = 14,
+  Area = 15,
+}
+
+/**
+ * Sent with {@link RequestCommandId.PrinterConfig2}
+ * @category Packets
+ **/
+export enum PrinterConfig2Type {
+  Time = 8,
+}
+
+/**
+ * Sent with {@link RequestCommandId.PrinterConfig2}
+ * @category Packets
+ **/
+export enum PrinterConfig2Action {
+  SetValue = 1,
+  GetValue = 2,
+}
+
+/** @category Packets */
+export enum SoundSettingsType {
+  SetSound = 0x01,
+  GetSoundState = 0x02,
+}
+
+/** @category Packets */
+export enum SoundSettingsItemType {
+  BluetoothConnectionSound = 0x01,
+  PowerSound = 0x02,
+}
+
+/**
+ * Sent with {@link RequestCommandId.SetLabelType}.
+ *
+ * @category Packets
+ **/
+export enum LabelType {
+  Invalid = 0,
+  /** Default for most of label printers */
+  WithGaps = 1,
+  Black = 2,
+  Continuous = 3,
+  Perforated = 4,
+  Transparent = 5,
+  PvcTag = 6,
+  BlackMarkGap = 10,
+  HeatShrinkTube = 11,
+}
+
+/** @category Packets */
+export enum HeartbeatType {
+  Advanced1 = 1,
+  Basic = 2,
+  PrinterInfo = 3,
+  Advanced2 = 4,
+}
+
+/** @category Packets */
+export enum AutoShutdownTime {
+  /** Usually 15 minutes. */
+  ShutdownTime1 = 1,
+  /** Usually 30 minutes. */
+  ShutdownTime2 = 2,
+  /** May be 45 or 60 minutes (depending on model). */
+  ShutdownTime3 = 3,
+  /** May be 60 minutes or never (depending on model). */
+  ShutdownTime4 = 4,
+}
+
+/**
+ * {@link ResponseCommandId.In_Connect} status codes.
+ * @category Packets
+ **/
+export enum ConnectResult {
+  Disconnect = 0,
+  Connected = 1,
+  ConnectedNew = 2,
+  ConnectedV3 = 3,
+  FirmwareErrors = 90,
+}
+
+/**
+ * {@link ResponseCommandId.In_PrintError} status codes.
+ * @category Packets
+ **/
+export enum PrinterErrorCode {
+  CoverOpen = 0x01,
+  /** No paper */
+  LackPaper = 0x02,
+  LowBattery = 0x03,
+  BatteryException = 0x04,
+  UserCancel = 0x05,
+  DataError = 0x06,
+  Overheat = 0x07,
+  PaperOutException = 0x08,
+  PrinterBusy = 0x09,
+  NoPrinterHead = 0x0a,
+  TemperatureLow = 0x0b,
+  PrinterHeadLoose = 0x0c,
+  NoRibbon = 0x0d,
+  WrongRibbon = 0x0e,
+  UsedRibbon = 0x0f,
+  WrongPaper = 0x10,
+  SetPaperFail = 0x11,
+  SetPrintModeFail = 0x12,
+  SetPrintDensityFail = 0x13,
+  WriteRfidFail = 0x14,
+  SetMarginFail = 0x15,
+  CommunicationException = 0x16,
+  Disconnect = 0x17,
+  CanvasParameterError = 0x18,
+  RotationParameterException = 0x19,
+  JsonParameterException = 0x1a,
+  B3sAbnormalPaperOutput = 0x1b,
+  ECheckPaper = 0x1c,
+  RfidTagNotWritten = 0x1d,
+  SetPrintDensityNoSupport = 0x1e,
+  SetPrintModeNoSupport = 0x1f,
+  SetPrintLabelMaterialError = 0x20,
+  SetPrintLabelMaterialNoSupport = 0x21,
+  NotSupportWrittenRfid = 0x22,
+  IllegalPage = 0x32,
+  IllegalRibbonPage = 0x33,
+  ReceiveDataTimeout = 0x34,
+  NonDedicatedRibbon = 0x35,
+}
+
+/**
+ * Sent with {@link RequestCommandId.PrintStart}
+ * @category Packets
+ **/
+export enum PageColorType {
+  SingleColor = 0,
+  DoubleColor = 1,
+  SingleColorAlt = 2,
+  MultiorderColor = 3,
+}
+
+/**
+ * Sent with {@link RequestCommandId.PrintBitmapRowDoubleColor}
+ * @category Packets
+ **/
+export enum BitmapColorMode {
+  Empty = 0,
+  Red = 1,
+  Black = 2,
+  Mixed = 3,
+}
+
+/**
+ * Sent with {@link RequestCommandId.PrintBitmapRowDoubleColor}
+ * @category Packets
+ **/
+export enum ResolutionClass {
+  DPI203 = 2,
+  DPI300 = 3,
+}
+
+export enum PrinterCapabilitiesField {
+  /** uint8, 1 byte (bitmask) */
+  Language = 0x01,
+  /** uint8, 1 byte (bitmask) */
+  PrintMode = 0x02,
+  /** uint8, 1 byte (bitmask) */
+  UhfRfid = 0x03,
+  /** uint16, 2 bytes */
+  PrintheadDpi = 0x04,
+  /** uint8, 1 byte (bitmask) */
+  RfidSupport = 0x05,
+  /** uint8[], 2 bytes */
+  BatteryRange = 0x06,
+  /** uint8[], 2 bytes */
+  DensityRange = 0x07,
+  /** uint8[], 2 bytes */
+  SpeedRange = 0x08,
+  /** uint8[], 4 bytes (bitmask) */
+  SupportedLabelTypes = 0x09,
+  /** uint16, 2 bytes */
+  PrintheadWidth = 0x0a,
+  /** uint16, 2 bytes */
+  MaxPrintHeight = 0x0b,
+  /** uint8, 1 byte */
+  LabelHeightAndGap = 0x0c,
+  /** uint8, 1 byte */
+  PrintheadPosition = 0x0d,
+  /** uint8, 1 byte (bitmask) */
+  VolumeSupport = 0x0e,
+  /** uint8, 1 byte (bitmask) */
+  HostStyle = 0x0f,
+  /** uint8, 1 byte (bitmask) */
+  PrintProtocol = 0x10,
+  /** uint8[], 2 bytes */
+  AutoShutdownRange = 0x11,
+  /** uint8, 1 byte (bitmask) */
+  CutterSupport = 0x12,
+  /** uint8[], 2 bytes */
+  CutterDepthRange = 0x13,
+  /** uint8, 1 byte (bitmask) */
+  PrintControl = 0x14,
+  /** uint8, 1 byte (bitmask) */
+  PauseTimeSupport = 0x15,
+  /** uint8, 1 byte */
+  PaperDetection = 0x16,
+  /** uint8, 1 byte (bitmask) */
+  RealTimeClock = 0x17,
+  /** uint8[], variable bytes (bitmask) */
+  KeyFunctions = 0x18,
+  /** uint8, 1 byte */
+  Unknown19 = 0x19,
+  /** uint8, 1 byte (bitmask) */
+  PrintColor = 0x1a,
+  /** uint8, 1 byte (bitmask) */
+  SpeedQualityMode = 0x1b,
+  /** uint8, 1 byte (bitmask) */
+  TubeCalibration = 0x1c,
+  /** uint8, 1 byte (bitmask) */
+  PartialRetransmitSupport = 0x1d,
+  /** uint16, 2 bytes */
+  MaxCompressLines = 0x1e,
+  /** uint8, 1 byte (bitmask) */
+  TubeSupport = 0x1f,
+  /** uint16, 2 bytes */
+  SixteenGrayMaxBuffer = 0x20,
+  /** uint8, 1 byte (bitmask) */
+  LocalTemplateSupport = 0x21,
+  /** uint8, 1 byte (bitmask) */
+  ImageCompressSupport = 0x22,
+  /** uint32, 4 bytes */
+  MaxImageCompressBytes = 0x23,
+  /** uint8, 1 byte */
+  LocalTemplateMaxTimeCount = 0x24,
+}

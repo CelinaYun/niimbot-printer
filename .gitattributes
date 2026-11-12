@@ -1,0 +1,8 @@
+# 统一换行：源码与文档用 LF，Windows 批处理必须 CRLF（否则 cmd 解析错行）
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
