@@ -28,6 +28,8 @@ _EN: dict[str, str] = {
     "字号已缩到 {n}，让最长的一行放进 {width} 点宽":
         "Font size reduced to {n} so the longest line fits {width}px",
     "（已隐藏 {n} 个不像打印机的）": " ({n} unrelated hidden)",
+    "最大字号": "Max font",
+    "已调到这张标签能放下的最大字号：{n}": "Largest font that fits this label: {n}",
     "横版": "Landscape",
     "竖版": "Portrait",
     "版式": "Layout",

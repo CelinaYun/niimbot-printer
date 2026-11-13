@@ -821,6 +821,9 @@ class App:
         self.font_size.insert(0, "28")
         self.font_size.pack(side="left")
         self.font_size.bind("<KeyRelease>", lambda e: self._render_preview())
+        self.max_font_btn = fl.FluentButton(r, tr("最大字号"), self._fit_font_size,
+                                           style="standard", theme=self.theme)
+        self.max_font_btn.pack(side="left", padx=(fl.S(6), 0))
 
         self.bold_var = tk.BooleanVar(value=False)
         fl.Toggle(r, self.bold_var, theme=self.theme).pack(side="left", padx=(16, 6))
@@ -995,6 +998,27 @@ class App:
     def _layout(self, text: str) -> LayoutResult:
         fn = render_portrait_label if self._is_portrait() else render_landscape_label
         return fn(text=text, **self._layout_params())
+
+    def _fit_font_size(self) -> None:
+        """一键把字号设成这张标签能放下的最大值。
+
+        预览会自动缩字号，但用户看不出这张纸的上限。用程序上限 48 渲染一次，
+        fit_layout 算出的就是当前内容、当前纸型下的最大可用字号。
+        """
+        text = self.text_box.get("1.0", "end").rstrip("\n")
+        current = self.font_size.get()
+        try:
+            self._set_spin(self.font_size, 48)
+            used = self._layout(text).font_used
+        except Exception as e:  # noqa: BLE001
+            self._log_error("求最大字号失败：", e)
+            used = 0
+        if not used:
+            self._set_spin(self.font_size, current)
+            return
+        self._set_spin(self.font_size, used)
+        self._render_preview()
+        self._log(fmt("已调到这张标签能放下的最大字号：{n}", n=used))
 
     def _render_preview(self) -> None:
         params = self._layout_params()
