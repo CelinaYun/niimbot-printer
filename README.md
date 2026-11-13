@@ -9,7 +9,7 @@ Windows 桌面端的 NIIMBOT 便携热敏标签打印机工具，支持 **D110 /
 
 ## 直接下载（不用装 Python）
 
-**[NIIMBOT-Printer-v1.0.4.zip](https://github.com/CelinaYun/niimbot-printer/releases/download/v1.0.4/NIIMBOT-Printer-v1.0.4.zip)** · 19.9 MB
+**[NIIMBOT-Printer-v1.0.5.zip](https://github.com/CelinaYun/niimbot-printer/releases/download/v1.0.5/NIIMBOT-Printer-v1.0.5.zip)** · 19.9 MB
 
 解压后双击 `NIIMBOT打印助手.exe` 即可。Windows 10 / 11 64 位，不需要任何运行环境。
 （记得解压**整个文件夹**，exe 依赖同级的 `_internal` 目录。）

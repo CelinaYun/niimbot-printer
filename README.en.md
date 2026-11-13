@@ -10,7 +10,7 @@ mobile app, no official SDK.
 
 ## Download (no Python required)
 
-**[NIIMBOT-Printer-v1.0.4.zip](https://github.com/CelinaYun/niimbot-printer/releases/download/v1.0.4/NIIMBOT-Printer-v1.0.4.zip)** · 19.9 MB
+**[NIIMBOT-Printer-v1.0.5.zip](https://github.com/CelinaYun/niimbot-printer/releases/download/v1.0.5/NIIMBOT-Printer-v1.0.5.zip)** · 19.9 MB
 
 Unzip the **whole folder** and run `NIIMBOT打印助手.exe`. Windows 10 / 11 64-bit, nothing to install.
 (The exe needs the `_internal` directory sitting next to it — don't pull the exe out on its own.)
