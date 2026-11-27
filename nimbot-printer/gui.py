@@ -24,7 +24,7 @@ from PIL import Image as PILImage
 import fluent as fl
 import fonts  # 导入即把 assets/fonts 下的官方字体注册到本进程（必须早于 tk.Tk）
 import settings
-from i18n import fmt, get_lang, set_lang, tr, untr
+from i18n import fmt, get_lang, is_en, set_lang, tr, untr
 from paths import data_path
 from version import __version__
 from fluent import (
@@ -1374,6 +1374,14 @@ class App:
         return self.client
 
 
+    def _focus_quantity(self) -> None:
+        """把焦点还给份数框并全选，方便直接改写。"""
+        try:
+            self.quantity.focus_set()
+            self.quantity.selection_range(0, "end")
+        except tk.TclError:  # noqa: BLE001
+            pass
+
     def _print(self) -> None:
         # 打印中再按一次 = 取消（此时按钮文字是「取消」）
         if self._printing:
@@ -1403,11 +1411,18 @@ class App:
             messagebox.showinfo(APP_TITLE, "份数不合法")
             return
 
+        # 每次提交前都确认份数——这是最容易设错、错了又最费纸的参数。
+        # 份数只有这一个入口，但恢复设置、上下箭头、手输都会改到它，所以统一在这里拦。
+        if is_en() and quantity == 1:
+            tip = "About to print 1 copy. Continue?"      # 英文单数走单独一句
+        else:
+            tip = fmt("即将打印 {n} 份，确认继续吗？", n=quantity)
         if quantity > 10:
-            if not messagebox.askyesno(
-                    APP_TITLE,
-                    f"要连续打印 {quantity} 份，每份都得等打印机走完，耗时会长。\n确定继续吗？"):
-                return
+            tip += fmt("\n\n连续 {n} 份，每份都要等打印机走完，耗时较长。", n=quantity)
+        if not messagebox.askyesno(APP_TITLE, tip, parent=self.root):
+            self._focus_quantity()
+            self._log(fmt("已取消打印（份数 {n}）", n=quantity))
+            return
 
         idx = self.label_type.current()
         label_type = LABEL_TYPE_VALUES[idx] if 0 <= idx < len(LABEL_TYPE_VALUES) else 1

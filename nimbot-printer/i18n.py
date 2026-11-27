@@ -28,6 +28,9 @@ _EN: dict[str, str] = {
     "字号已缩到 {n}，让最长的一行放进 {width} 点宽":
         "Font size reduced to {n} so the longest line fits {width}px",
     "（已隐藏 {n} 个不像打印机的）": " ({n} unrelated hidden)",
+    "即将打印 {n} 份，确认继续吗？": "About to print {n} copies. Continue?",
+    "\n\n连续 {n} 份，每份都要等打印机走完，耗时较长。": "\n\n{n} copies in a row — each waits for the printer, so this takes a while.",
+    "已取消打印（份数 {n}）": "Print cancelled (quantity {n})",
     "最大字号": "Max font",
     "已调到这张标签能放下的最大字号：{n}": "Largest font that fits this label: {n}",
     "横版": "Landscape",
