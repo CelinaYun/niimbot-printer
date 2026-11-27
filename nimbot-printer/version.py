@@ -6,5 +6,5 @@
 
 from __future__ import annotations
 
-__version__ = "1.0.5"
-RELEASE_DATE = "2026-11-13"
+__version__ = "1.0.6"
+RELEASE_DATE = "2026-11-27"
